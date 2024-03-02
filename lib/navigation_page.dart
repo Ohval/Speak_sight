@@ -1,6 +1,8 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:speak_sight/theme/extention.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -85,8 +87,15 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final player = AudioCache();
 
   @override
   Widget build(BuildContext context) {
@@ -94,23 +103,35 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            height: 435,
-            decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.white,
-                ),
-                borderRadius: BorderRadius.circular(21)),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(23),
+          Center(
+            child: SizedBox(
+              height: 300,
+              width: double.infinity,
               child: Image.asset(
-                "assets/gestes1.gif",
+                "assets/ily.gif",
                 fit: BoxFit.fill,
-              ),
+              ).circularCorner(23),
             ),
           ),
           const Gap(31),
-          ElevatedButton(onPressed: () {}, child: const Text("Start Analyzing"))
+          Container(
+            color: Colors.blueAccent,
+            width: 150,
+            height: 50,
+            child: const Center(
+              child: Text(
+                "Start Analyzing",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ).circularCorner(23).ripple(() async {
+            await Future.delayed(const Duration(seconds: 2));
+
+            await player.load("nine.mp3");
+            await AudioPlayer().play(AssetSource("nine.mp3"));
+          }, borderRadius: 23).alignCenter,
         ],
       ),
     );
