@@ -39,6 +39,7 @@ dependencies:
   gap:
   flutter_native_splash:
   audioplayers: 
+  provider: 
 
 flutter_native_splash:
   android: true
