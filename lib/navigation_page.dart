@@ -87,10 +87,10 @@ class ProfilePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
-            "Profile",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
+          // const Text(
+          //   "Profile",
+          //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          // ),
           const Gap(51),
           Container(
             width: 130,
@@ -148,7 +148,7 @@ class ProfilePage extends StatelessWidget {
               ],
             ).vP16,
           ).vP8,
-          //Billing
+          //User management
           Container(
             decoration: const BoxDecoration(
                 color: Color.fromARGB(57, 130, 178, 255),
@@ -166,8 +166,28 @@ class ProfilePage extends StatelessWidget {
               ],
             ).vP16,
           ).vP8,
-          //usermanagement
+          //
 
+          Container(
+            decoration: const BoxDecoration(
+                color: Color.fromARGB(52, 255, 130, 130),
+                borderRadius: BorderRadius.horizontal(
+                    left: Radius.circular(12), right: Radius.circular(31))),
+            child: const Row(
+              children: [
+                Gap(23),
+                Icon(
+                  Icons.exit_to_app,
+                  color: Colors.red,
+                ),
+                Gap(8),
+                Text("Log Out "),
+                Spacer(),
+                Icon(Icons.arrow_forward_ios_rounded),
+                Gap(18)
+              ],
+            ).vP16,
+          ).vP8,
           //information
         ],
       ).alignCenter,
